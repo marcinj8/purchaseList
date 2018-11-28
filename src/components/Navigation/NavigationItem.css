@@ -1,0 +1,16 @@
+.navigation__item{
+    display: inline-block;
+    margin: 10px 15px;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
+.navigation__item--active{
+    background: green;
+
+    
+}
+.navigation__item--noActive{
+    background: red;
+    
+}

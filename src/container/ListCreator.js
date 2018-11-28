@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import PurchaseList from '../components/PurchaseList/PurchaseList';
+import UserForm from '../components/Form/Form';
 
-class ListManeger extends Component {
+class ListCreator extends Component {
+
     render() {
         return (
             <div>
-                <PurchaseList 
-                    list={this.props.list}/>
+                <UserForm />
             </div>
         )
     }
@@ -22,4 +22,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(ListManeger);
+export default connect()(ListCreator);
