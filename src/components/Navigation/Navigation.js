@@ -14,7 +14,6 @@ const navigation = props => {
         )
     }
 
-    console.log(props.navigation)
     return (
         <div>
             {navigation}

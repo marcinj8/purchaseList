@@ -9,19 +9,23 @@ const initialState = {
 };
 
 const addItem = (state, item) => {
+    console.log( 'state')
+    console.log(initialState, 'state')
     return {
         ...state,
         list: {
             ...state.list,
-            [item.itemName]: item.value
+            [item.name]: [item.value, item.unit]
         }
     };
 };
 
 const reducer = (state = initialState, action) => {
+    console.log(action.type, 'state')
+
     switch (action.type) {
-        case 'add':
-            return addItem(state, action.newItem);
+        case 'ADD_ITEM':
+            return addItem(state, action);
         default:
             return state
     };
