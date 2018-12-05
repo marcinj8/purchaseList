@@ -4,11 +4,8 @@ import { connect } from 'react-redux';
 import PurchaseList from '../components/PurchaseList/PurchaseList';
 
 class ListManeger extends Component {
-    componentDidUpdate() {
-        console.log('this.props.list')
-    }
+    
     render() {
-        console.log(this.props.list)
         return (
             <div>
                 <PurchaseList 

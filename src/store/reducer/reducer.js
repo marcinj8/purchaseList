@@ -15,13 +15,13 @@ const addItem = (state, item) => {
         ...state,
         list: {
             ...state.list,
-            [item.name]: [item.value, item.unit]
+            [item.name]: [item.quantity, item.unit]
         }
     };
 };
 
 const reducer = (state = initialState, action) => {
-    console.log(action.type, 'state')
+    console.log(action, 'state')
 
     switch (action.type) {
         case 'ADD_ITEM':
