@@ -1,3 +1,5 @@
+import * as actionTypes from '../actions/actionTypes';
+
 const initialState = {
     list: {
         bread: [1, 'pce'],
@@ -8,26 +10,41 @@ const initialState = {
     purchasedItems: {},
 };
 
-const addItem = (state, item) => {
-    console.log( 'state')
-    console.log(initialState, 'state')
+const addItem = (state, item, listType) => {
     return {
         ...state,
-        list: {
-            ...state.list,
+        [listType]: {
+            ...state[listType],
             [item.name]: [item.quantity, item.unit]
         }
     };
 };
 
-const reducer = (state = initialState, action) => {
-    console.log(action, 'state')
+const editLlists = (state, action, listType) => {
+    const updatedList = Object.keys(state.list).filter(item => item !== action.name)
+    const itemsUpdated = addItem(state, action, listType)
+    const updatedState = {};
+    for (let value of updatedList) {
+        updatedState[value] = [state.list[value][0],state.list[value][1]]
+    }
+    return {
+        ...state,
+        list: {
+            ...updatedState
+        },
+        [listType]: {
+            ...itemsUpdated[listType]
+        }
+    }
+}
 
+
+const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD_ITEM':
-            return addItem(state, action);
-        default:
-            return state
+        case actionTypes.ADD_ITEM: return addItem(state, action, 'list');
+        case actionTypes.PURCHASED_ITEM: return editLlists(state, action, 'purchasedItems');
+        case actionTypes.REMOVE_ITEM: return editLlists(state, action, 'deletedPosition');
+        default: return state;
     };
 };
 
