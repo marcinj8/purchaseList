@@ -16,12 +16,12 @@ class ListManeger extends Component {
                     clearAll={this.props.clearAll}
                     list={this.props.list}/>
                 <PurchaseList
-                    confirm={this.props.onReturnToPurchaselist}
+                    confirm={(data)=>this.props.onReturnToPurchaselist(data, 'purchasedItems')}
                     resign={(data) => this.props.onDeleteItem(data, 'purchasedItems')}
                     title={'Purhased list'}
                     list={this.props.purchased}/>
                 <PurchaseList
-                    confirm={this.props.onReturnToPurchaselist}
+                    confirm={(data)=>this.props.onReturnToPurchaselist(data, 'deletedPosition')}
                     resign={(data) => this.props.onDeleteItem(data, 'deletedPosition')}
                     title={'Deleted list'}
                     list={this.props.deleted}/>
@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onItemPurchased: data => dispatch(actions.purchsedItem(data)),
         onItemRemoved: data => dispatch(actions.removeItem(data)),
-        onReturnToPurchaselist: data => dispatch(actions.returnToPurchaselist(data)),
+        onReturnToPurchaselist: (data, list) => dispatch(actions.returnToPurchaselist(data, list)),
         onDeleteItem: (data, list) => dispatch(actions.deleteItem(data, list))
     }
 }

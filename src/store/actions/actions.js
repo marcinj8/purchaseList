@@ -32,19 +32,18 @@ export const removeItem = item => {
     }
 }
 
-export const returnToPurchaselist = item => {
+export const returnToPurchaselist = (item, currentList) => {
     return {
         type: actionTypes.REMOVE_ITEM,
         name: item.name,
         quantity: item.quantity,
         unit: item.unit,
         newList: 'list',
-        oldList: 'purchasedItems'
+        oldList: currentList
     }
 }
 
 export const deleteItem = (item, currentList) => {
-    console.log(item, currentList)
     return {
         type: actionTypes.DELETE_ITEM,
         name: item.name,

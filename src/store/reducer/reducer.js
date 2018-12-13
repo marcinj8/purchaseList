@@ -21,8 +21,8 @@ const addItem = (state, item, listType) => {
 };
 
 const moveItem = (state, action) => {
-    const updatedList = Object.keys(state[action.oldList]).filter(item => item !== action.name)
     const itemsUpdated = addItem(state, action, action.newList)
+    const updatedList = Object.keys(state[action.oldList]).filter(item => item !== action.name)
     const updatedState = {};
     for (let value of updatedList) {
         updatedState[value] = [state[action.oldList][value][0],state[action.oldList][value][1]]
@@ -39,9 +39,18 @@ const moveItem = (state, action) => {
 }
 
 const deleteItem = (state, action) => {
-    console.log(state, action);
+    const updatedList = Object.keys(state[action.currentList]).filter(item => item !== action.name)
+    const updatedState = {};
+    for (let value of updatedList) {
+        updatedState[value] = [state[action.currentList][value][0],state[action.currentList][value][1]]
+    }
     
-    return state
+    return {
+        ...state,
+        [action.currentList]: {
+            ...updatedState
+        }
+    }
 }
 
 

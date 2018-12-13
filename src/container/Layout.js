@@ -25,14 +25,28 @@ class Layout extends Component {
             },
         }
     }
+    
+    showListHandler = item => {
+        let navigation = {...this.state.navigation}
+        let navigationItem = navigation[item]
+        navigationItem.display= !this.state.navigation[item].display
+        navigation[item] = navigationItem
+
+        this.setState({
+            navigation: navigation
+        })
+        console.log(this.state)
+    }
 
     render() {
         return (
             <div>
                 <Navigation 
+                    showList={this.showListHandler}
                     navigation={this.state.navigation}/>
                 <ListCreator />
-                <ListManager />
+                <ListManager 
+                    navigation={this.state.navigation}/>
             </div>
         )
     }
