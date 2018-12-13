@@ -6,6 +6,7 @@ export const addItem = item => {
         name: item.name,
         quantity: item.quantity,
         unit: item.unit,
+        newList: 'list'
     }
 }
 
@@ -15,6 +16,8 @@ export const purchsedItem = item => {
         name: item.name,
         quantity: item.quantity,
         unit: item.unit,
+        newList: 'purchasedItems',
+        oldList: 'list'
     }
 }
 
@@ -24,5 +27,29 @@ export const removeItem = item => {
         name: item.name,
         quantity: item.quantity,
         unit: item.unit,
+        newList: 'deletedPosition',
+        oldList: 'list'
+    }
+}
+
+export const returnToPurchaselist = item => {
+    return {
+        type: actionTypes.REMOVE_ITEM,
+        name: item.name,
+        quantity: item.quantity,
+        unit: item.unit,
+        newList: 'list',
+        oldList: 'purchasedItems'
+    }
+}
+
+export const deleteItem = (item, currentList) => {
+    console.log(item, currentList)
+    return {
+        type: actionTypes.DELETE_ITEM,
+        name: item.name,
+        quantity: item.quantity,
+        unit: item.unit,
+        currentList: currentList,
     }
 }

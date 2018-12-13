@@ -11,15 +11,19 @@ class ListManeger extends Component {
             <div>
                 <PurchaseList 
                     title={'Purhase list'}
-                    purchased={this.props.onItemPurchased}
-                    removed={this.props.onItemRemoved}
-                    deleted={this.props.onItemDeleted}
+                    confirm={this.props.onItemPurchased}
+                    resign={this.props.onItemRemoved}
+                    clearAll={this.props.clearAll}
                     list={this.props.list}/>
-                <PurchaseList 
-                    title={'Purhased'}
+                <PurchaseList
+                    confirm={this.props.onReturnToPurchaselist}
+                    resign={(data) => this.props.onDeleteItem(data, 'purchasedItems')}
+                    title={'Purhased list'}
                     list={this.props.purchased}/>
-                <PurchaseList 
-                    title={'Deleted'}
+                <PurchaseList
+                    confirm={this.props.onReturnToPurchaselist}
+                    resign={(data) => this.props.onDeleteItem(data, 'deletedPosition')}
+                    title={'Deleted list'}
                     list={this.props.deleted}/>
             </div>
         )
@@ -36,8 +40,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onItemPurchased: item => dispatch(actions.purchsedItem(item)),
-        onItemRemoved: item => dispatch(actions.removeItem(item))
+        onItemPurchased: data => dispatch(actions.purchsedItem(data)),
+        onItemRemoved: data => dispatch(actions.removeItem(data)),
+        onReturnToPurchaselist: data => dispatch(actions.returnToPurchaselist(data)),
+        onDeleteItem: (data, list) => dispatch(actions.deleteItem(data, list))
     }
 }
 
