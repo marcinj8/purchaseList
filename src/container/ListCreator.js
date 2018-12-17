@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions/actions';
 import Form from '../components/Form/Form';
 
+import './ListCreator.css'
+
 class ListCreator extends Component {
     state = {
         itemName: '',
@@ -48,8 +50,13 @@ class ListCreator extends Component {
     }
 
     render() {
+        console.log(this.props.navigation)
         return (
-            <div>
+            <div className={[
+                    'listCreator__form', 
+                    this.props.navigation.display 
+                    ? this.props.navigation.className + '--active' 
+                    : this.props.navigation.className + '--closed'].join(' ')}>
                 <Form 
                     onItemNameChange={this.onItemNameChange}
                     onQuantityChange={this.onQuantityChange}

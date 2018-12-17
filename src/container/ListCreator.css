@@ -1,0 +1,66 @@
+.listCreator__form {
+    padding: 10px 0 10px 10px;
+    transform: rotateY(0);
+    height: auto;
+    margin: 10px auto;
+}
+
+.newItem--active {
+    background: rgb(184, 184, 184);
+    animation: .43s ease-out forwards showNewItem;
+}
+
+.newItem--closed {
+    background: rgb(41, 41, 41);
+    animation: .3s ease-in forwards hideNewItem;
+
+}
+
+@keyframes showNewItem {
+    0% {
+        transform: rotateY(90deg);
+        height: 0;
+        padding: 0;
+        margin: 0 auto;
+
+    }
+
+    15% {
+        margin: 10px auto;
+        height: auto;
+    }
+
+    95% {}
+
+    100% {
+        padding: 10px 0 10px 10px;
+        transform: rotateY(0);
+        height: auto;
+        margin: 10px auto;
+
+    }
+}
+
+@keyframes hideNewItem {
+    0% {
+        transform: rotateY(0);
+        height: auto;
+        padding: 10px 0 10px 10px;
+        margin: 10px auto;
+
+    }
+
+    5% {}
+
+    75% {
+        padding: 0;
+        height: 0;
+    }
+
+    100% {
+        height: 0;
+        transform: rotateY(90deg);
+        padding: 0;
+        margin: 0 auto;
+    }
+}

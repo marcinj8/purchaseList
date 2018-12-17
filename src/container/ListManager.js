@@ -11,19 +11,25 @@ class ListManeger extends Component {
             <div>
                 <PurchaseList 
                     title={'Purhase list'}
+                    class={this.props.navigation.listItem.className}
+                    display={this.props.navigation.listItem.display}
                     confirm={this.props.onItemPurchased}
                     resign={this.props.onItemRemoved}
                     clearAll={this.props.clearAll}
                     list={this.props.list}/>
                 <PurchaseList
+                    title={'Purhased list'}
+                    class={this.props.navigation.purchased.className}
+                    display={this.props.navigation.purchased.display}
                     confirm={(data)=>this.props.onReturnToPurchaselist(data, 'purchasedItems')}
                     resign={(data) => this.props.onDeleteItem(data, 'purchasedItems')}
-                    title={'Purhased list'}
                     list={this.props.purchased}/>
                 <PurchaseList
+                    title={'Deleted list'}
+                    class={this.props.navigation.deleted.className}
+                    display={this.props.navigation.deleted.display}
                     confirm={(data)=>this.props.onReturnToPurchaselist(data, 'deletedPosition')}
                     resign={(data) => this.props.onDeleteItem(data, 'deletedPosition')}
-                    title={'Deleted list'}
                     list={this.props.deleted}/>
             </div>
         )

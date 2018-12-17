@@ -9,18 +9,22 @@ class Layout extends Component {
         navigation: {
             newItem: {
                 name: 'New Item',
+                className: 'newItem',
                 display: false
             },
             listItem: {
                 name: 'Purchase List',
+                className: 'listItem',
                 display: true
-            },
-            deleted: {
-                name: 'Deleted',
-                display: false
             },
             purchased: {
                 name: 'Purchased',
+                className: 'purchased',
+                display: false
+            },
+            deleted: {
+                name: 'Deleted',
+                className: 'deleted',
                 display: false
             },
         }
@@ -35,7 +39,6 @@ class Layout extends Component {
         this.setState({
             navigation: navigation
         })
-        console.log(this.state)
     }
 
     render() {
@@ -44,7 +47,8 @@ class Layout extends Component {
                 <Navigation 
                     showList={this.showListHandler}
                     navigation={this.state.navigation}/>
-                <ListCreator />
+                <ListCreator 
+                    navigation={this.state.navigation.newItem}/>
                 <ListManager 
                     navigation={this.state.navigation}/>
             </div>
